@@ -69,21 +69,23 @@ if __name__ == '__main__':
 
     contr = True
     while contr:
+
         request = input('\nВведите запрос: ').lower()
 
         if request == 'stop':
             print('Good luck!')
             contr = False
+
         elif request == 'get':
             try:
-                user_id = int(input('Введите id пользователя: '))
+                get_user_id = int(input('Введите id пользователя: '))
             except ValueError:
                 print('ОШИБКА: ID пользователя должно быть числом')
 
-            if user_id is not None:
+            if get_user_id is not None:
                 print(''.center(60, '.'))
                 print('Результат запроса:')
-                print(users_base.get_user_by_id(user_id))
+                print(users_base.get_user_by_id(get_user_id))
 
         elif request == 'add':
             name = input('Введите имя пользователя: ')
@@ -93,7 +95,7 @@ if __name__ == '__main__':
             except ValueError:
                 print('ОШИБКА: Возраст пользоваетля должен быть в числовом формате')
 
-            if name.__len__() != 0 and surname.__len__() != 0:
+            if len(name) != 0 and len(surname) != 0:
                 if 0 <= age <= 99:
                     print(''.center(60, '.'))
                     print(f'Пользователь {name} успешно добавлен в базу:')
@@ -111,23 +113,23 @@ if __name__ == '__main__':
 
         elif request == 'del':
             try:
-                user_id = int(input('Введите id пользователя для удаления: '))
+                del_user_id = int(input('Введите id пользователя для удаления: '))
             except ValueError:
                 print('ОШИБКА: ID пользователя должно быть числом')
 
-            if user_id is not None:
-                if user_id in users_base.users.keys():
-                    agree = input(f"Вы уверенны что хотите удалить пользователя с id:{user_id}? [y/n]: ").lower()
+            if del_user_id is not None:
+                if del_user_id in users_base.users.keys():
+                    agree = input(f"Вы уверенны что хотите удалить пользователя с id:{del_user_id}? [y/n]: ").lower()
                     if agree == 'y':
-                        users_base.remove_user(user_id)
+                        users_base.remove_user(del_user_id)
                         print(''.center(60, '.'))
-                        print(f'Пользователь с id:{user_id} был успешно удален.')
+                        print(f'Пользователь с id:{del_user_id} был успешно удален.')
                     elif agree == 'n':
                         print('Удаление было отмененно')
                     else:
                         print('ОШИБКА: Не корректная команда')
                 else:
-                    print(f'ОШИБКА: Пользователя с id:{user_id} нет в базе.')
+                    print(f'ОШИБКА: Пользователя с id:{del_user_id} нет в базе.')
 
         else:
             print('ОШИБКА: Вы ввели не корректиный запрос')
