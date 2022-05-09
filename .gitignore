@@ -1,0 +1,4 @@
+cat .gitignore
+
+# dirrectory with database files
+base/
