@@ -80,6 +80,7 @@ if __name__ == '__main__':
             try:
                 get_user_id = int(input('Введите id пользователя: '))
             except ValueError:
+                get_user_id = None
                 print('ОШИБКА: ID пользователя должно быть числом')
 
             if get_user_id is not None:
@@ -93,9 +94,10 @@ if __name__ == '__main__':
             try:
                 age = int(input('Введите возраст пользователя: '))
             except ValueError:
+                age = None
                 print('ОШИБКА: Возраст пользоваетля должен быть в числовом формате')
 
-            if len(name) != 0 and len(surname) != 0:
+            if len(name) != 0 and len(surname) != 0 and age is not None:
                 if 0 <= age <= 99:
                     print(''.center(60, '.'))
                     print(f'Пользователь {name} успешно добавлен в базу:')
@@ -115,6 +117,7 @@ if __name__ == '__main__':
             try:
                 del_user_id = int(input('Введите id пользователя для удаления: '))
             except ValueError:
+                del_user_id = None
                 print('ОШИБКА: ID пользователя должно быть числом')
 
             if del_user_id is not None:
